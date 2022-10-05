@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import EventBar from './EventBar';
 import SearchedResult from './SearchedResult';
 
 const Nav = () => {
   const [searchedTerm, setSearchedTerm] = useState('');
+  const [isEventBarVisible, setIsEventBarVisible] = useState(true);
+  const [scrollY, setScrollY] = useState(0);
 
   const saveTerm = e => {
     setSearchedTerm(e.target.value);
@@ -14,8 +17,21 @@ const Nav = () => {
     setSearchedTerm('');
   };
 
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    scrollY > 50 ? setIsEventBarVisible(false) : setIsEventBarVisible(true);
+  }, [scrollY]);
+
+  window.addEventListener('scroll', handleScroll);
+
   return (
     <Container>
+      {isEventBarVisible && (
+        <EventBar setIsEventBarVisible={setIsEventBarVisible} />
+      )}
       <ContentsWrap>
         <CenterWrap>
           <Link to="/">
@@ -57,9 +73,10 @@ export default Nav;
 
 const Container = styled.div`
   ${props => props.theme.variables.flex('column', '', 'center')};
-  position: relative;
   width: 100%;
-
+  position: fixed;
+  border-bottom: 1px solid ${props => props.theme.style.lightGrey};
+  background-color: ${props => props.theme.style.white};
   a {
     text-decoration: none;
   }
