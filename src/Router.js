@@ -9,6 +9,7 @@ import Detail from './pages/Detail/Detail';
 import MyPage from './pages/MyPage/MyPage';
 import Upload from './pages/Upload/Upload';
 import Footer from './components/Footer/Footer';
+import UserAuth from './pages/Login/UserAuth';
 
 const Router = () => {
   return (
@@ -23,6 +24,7 @@ const Router = () => {
         <Route path="/detail" element={<Detail />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/upload" element={<Upload />} />
+        <Route path="/user/auth" element={<UserAuth />} />
       </Routes>
       <Footer />
     </BrowserRouter>
