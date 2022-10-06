@@ -1,0 +1,67 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "오늘의집1",
+      "description": "아아아",
+      "image": "https://plus.unsplash.com/premium_photo-1663013668671-d453f319544f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      "color_id": 1
+    },
+    {
+      "id": 2,
+      "name": "오늘의집2",
+      "description": "아아",
+      "image": "https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      "color_id": 1
+    },
+    {
+      "id": 3,
+      "name": "오늘의집3",
+      "description": "아아아",
+      "image": "https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      "color_id": 1
+    },
+    {
+      "id": 4,
+      "name": "오늘의집1",
+      "description": "아아아",
+      "image": "https://plus.unsplash.com/premium_photo-1663013668671-d453f319544f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      "color_id": 1
+    },
+    {
+      "id": 5,
+      "name": "오늘의집2",
+      "description": "아아",
+      "image": "https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      "color_id": 1
+    },
+    {
+      "id": 6,
+      "name": "오늘의집3",
+      "description": "아아아",
+      "image": "https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      "color_id": 1
+    },
+    {
+      "id": 7,
+      "name": "오늘의집1",
+      "description": "아아아",
+      "image": "https://plus.unsplash.com/premium_photo-1663013668671-d453f319544f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      "color_id": 1
+    },
+    {
+      "id": 8,
+      "name": "오늘의집2",
+      "description": "아아",
+      "image": "https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      "color_id": 1
+    },
+    {
+      "id": 9,
+      "name": "오늘의집3",
+      "description": "아아아",
+      "image": "https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      "color_id": 1
+    }
+  ]
+}
