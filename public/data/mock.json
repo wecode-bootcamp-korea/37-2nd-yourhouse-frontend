@@ -1,0 +1,120 @@
+{
+  "posts": [
+    {
+      "nickname": "기석",
+      "profile_image": null,
+      "postId": 1,
+      "image": [
+        "./images/living.png",
+        "image333",
+        "image333",
+        "image333",
+        "image353"
+      ],
+      "description": [null, null, "설명", "설명2", "설명4"],
+      "likes": "3",
+      "comments": "0",
+      "likeEx": 1
+    },
+    {
+      "nickname": "기석",
+      "profile_image": "./images/user.png",
+      "postId": 2,
+      "image": ["./images/interior.png"],
+      "description": ["dkfkfk"],
+      "likes": "0",
+      "comments": "0",
+      "likeEx": 0
+    },
+    {
+      "nickname": "기석",
+      "profile_image": "./images/user.png",
+      "postId": 3,
+      "image": ["./images/interior5.png"],
+      "description": ["dkfkfk"],
+      "likes": "0",
+      "comments": "0",
+      "likeEx": 0
+    },
+    {
+      "nickname": "기석",
+      "profile_image": "./images/user.png",
+      "postId": 4,
+      "image": ["./images/interior4.png"],
+      "description": ["dkfkfk"],
+      "likes": "0",
+      "comments": "0",
+      "likeEx": 0
+    },
+    {
+      "nickname": "기석",
+      "profile_image": "./images/user.png",
+      "postId": 5,
+      "image": ["./images/interior3.png"],
+      "description": ["dkfkfk"],
+      "likes": "0",
+      "comments": "0",
+      "likeEx": 0
+    },
+    {
+      "nickname": "기석",
+      "profile_image": "./images/user.png",
+      "postId": 6,
+      "image": ["./images/interior3.png"],
+      "description": ["dkfkfk"],
+      "likes": "0",
+      "comments": "0",
+      "likeEx": 0
+    },
+    {
+      "nickname": "기석",
+      "profile_image": "./images/user.png",
+      "postId": 7,
+      "image": ["./images/interior3.png"],
+      "description": ["dkfkfk"],
+      "likes": "0",
+      "comments": "0",
+      "likeEx": 0
+    },
+    {
+      "nickname": "기석",
+      "profile_image": "./images/user.png",
+      "postId": 8,
+      "image": ["./images/interior3.png"],
+      "description": ["dkfkfk"],
+      "likes": "0",
+      "comments": "0",
+      "likeEx": 0
+    },
+    {
+      "nickname": "기석",
+      "profile_image": "./images/user.png",
+      "postId": 9,
+      "image": ["./images/interior3.png"],
+      "description": ["dkfkfk"],
+      "likes": "0",
+      "comments": "0",
+      "likeEx": 0
+    },
+    {
+      "nickname": "기석",
+      "profile_image": "./images/user.png",
+      "postId": 10,
+      "image": ["./images/interior3.png"],
+      "description": ["dkfkfk"],
+      "likes": "0",
+      "comments": "0",
+      "likeEx": 0
+    },
+    {
+      "nickname": "기석",
+      "profile_image": "./images/user.png",
+      "postId": 11,
+      "image": ["./images/interior3.png"],
+      "description": ["dkfkfk"],
+      "likes": "0",
+      "comments": "0",
+      "likeEx": 0
+    }
+  ]
+}
