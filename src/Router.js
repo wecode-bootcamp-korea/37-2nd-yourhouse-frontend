@@ -10,7 +10,7 @@ import MyPage from './pages/MyPage/MyPage';
 import Upload from './pages/Upload/Upload';
 import Footer from './components/Footer/Footer';
 import UserAuth from './pages/Login/UserAuth';
-
+import Follow from './pages/Follow/Follow';
 const Router = () => {
   return (
     <BrowserRouter>
@@ -21,6 +21,7 @@ const Router = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/main" element={<Main />} />
         <Route path="/list" element={<List />} />
+        <Route path="/follow" element={<Follow />} />
         <Route path="/detail" element={<Detail />} />
         {/* <Route path="/detail/:id" element={<Detail />} /> */}
         <Route path="/mypage" element={<MyPage />} />
