@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "userid": "0taepark",
+    "userprofile": "./images/user.png",
+    "images": "./images/interior5.png",
+    "contents": "ㅇㄴ아ㅓ로어ㅏㄴ롱나ㅗㄹ나로ㅓㅏㄴ어리ㅏㄴㅁ아ㅣㄹㄴ어ㅣ란ㅇ러ㅏ넝ㅁ;ㅏㅣ렁니ㅏ런ㅇ;ㅏㅣ런ㅁ;이ㅏ런이ㅏㅓ ㄴ이ㅏ러아ㅣㄴㅁ러ㅏㅣㅇ너라ㅣㄴ어라ㅣㅇ너라ㅣㄴ어리ㅏㄴ어리ㅏㄴ어ㅣㄹ아ㅣㅓㅏㅣ",
+    "like": 50,
+    "bookmark": 30,
+    "comment": 13
+  },
+  {
+    "id": 2,
+    "userid": "0taepark",
+    "userprofile": "./images/user.png",
+    "images": "./images/interior3.png",
+    "contents": "ㅇㄴ아ㅓ로어ㅏㄴ롱나ㅗㄹ나로ㅓㅏㄴ어리ㅏㄴㅁ아ㅣㄹㄴ어ㅣ란ㅇ러ㅏ넝ㅁ;ㅏㅣ렁니ㅏ런ㅇ;ㅏㅣ런ㅁ;이ㅏ런이ㅏㅓ ㄴ이ㅏ러아ㅣㄴㅁ러ㅏㅣㅇ너라ㅣㄴ어라ㅣㅇ너라ㅣㄴ어리ㅏㄴ어리ㅏㄴ어ㅣㄹ아ㅣㅓㅏㅣ",
+    "like": 50,
+    "bookmark": 30,
+    "comment": 13
+  },
+  {
+    "id": 3,
+    "userid": "0taepark",
+    "userprofile": "./images/user.png",
+    "images": "./images/interior4.png",
+    "contents": "ㅇㄴ아ㅓ로어ㅏㄴ롱나ㅗㄹ나로ㅓㅏㄴ어리ㅏㄴㅁ아ㅣㄹㄴ어ㅣ란ㅇ러ㅏ넝ㅁ;ㅏㅣ렁니ㅏ런ㅇ;ㅏㅣ런ㅁ;이ㅏ런이ㅏㅓ ㄴ이ㅏ러아ㅣㄴㅁ러ㅏㅣㅇ너라ㅣㄴ어라ㅣㅇ너라ㅣㄴ어리ㅏㄴ어리ㅏㄴ어ㅣㄹ아ㅣㅓㅏㅣ",
+    "like": 50,
+    "bookmark": 30,
+    "comment": 13
+  },
+  {
+    "id": 4,
+    "userid": "0taepark",
+    "userprofile": "./images/user.png",
+    "images": "./images/interior5.png",
+    "contents": "ㅇㄴ아ㅓ로어ㅏㄴ롱나ㅗㄹ나로ㅓㅏㄴ어리ㅏㄴㅁ아ㅣㄹㄴ어ㅣ란ㅇ러ㅏ넝ㅁ;ㅏㅣ렁니ㅏ런ㅇ;ㅏㅣ런ㅁ;이ㅏ런이ㅏㅓ ㄴ이ㅏ러아ㅣㄴㅁ러ㅏㅣㅇ너라ㅣㄴ어라ㅣㅇ너라ㅣㄴ어리ㅏㄴ어리ㅏㄴ어ㅣㄹ아ㅣㅓㅏㅣ",
+    "like": 50,
+    "bookmark": 30,
+    "comment": 13
+  },
+  {
+    "id": 5,
+    "userid": "0taepark",
+    "userprofile": "./images/user.png",
+    "images": "./images/living.png",
+    "contents": "ㅇㄴ아ㅓ로어ㅏㄴ롱나ㅗㄹ나로ㅓㅏㄴ어리ㅏㄴㅁ아ㅣㄹㄴ어ㅣ란ㅇ러ㅏ넝ㅁ;ㅏㅣ렁니ㅏ런ㅇ;ㅏㅣ런ㅁ;이ㅏ런이ㅏㅓ ㄴ이ㅏ러아ㅣㄴㅁ러ㅏㅣㅇ너라ㅣㄴ어라ㅣㅇ너라ㅣㄴ어리ㅏㄴ어리ㅏㄴ어ㅣㄹ아ㅣㅓㅏㅣ",
+    "like": 50,
+    "bookmark": 30,
+    "comment": 13
+  },
+  {
+    "id": 6,
+    "userid": "0taepark",
+    "userprofile": "./images/user.png",
+    "images": "./images/interior5.png",
+    "contents": "ㅇㄴ아ㅓ로어ㅏㄴ롱나ㅗㄹ나로ㅓㅏㄴ어리ㅏㄴㅁ아ㅣㄹㄴ어ㅣ란ㅇ러ㅏ넝ㅁ;ㅏㅣ렁니ㅏ런ㅇ;ㅏㅣ런ㅁ;이ㅏ런이ㅏㅓ ㄴ이ㅏ러아ㅣㄴㅁ러ㅏㅣㅇ너라ㅣㄴ어라ㅣㅇ너라ㅣㄴ어리ㅏㄴ어리ㅏㄴ어ㅣㄹ아ㅣㅓㅏㅣ",
+    "like": 50,
+    "bookmark": 30,
+    "comment": 13
+  }
+]
