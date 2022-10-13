@@ -1,20 +1,24 @@
 import { React, useState } from 'react';
 import styled from 'styled-components';
+import API from '../../../../config';
 
 const ListFollow = ({ writerId, isFollowing }) => {
   const accessToken = localStorage.getItem('token');
   const [isFollow, setIsFollow] = useState(isFollowing);
+
   const pushFollow = () => {
     if (isFollow) {
-      fetch(`http://10.58.52.110:3000/post/follow?writerId=${writerId}`, {
+      fetch(`${API.follow}?writerId=${writerId}`, {
         method: 'DELETE',
         headers: {
           authorization: accessToken,
           'Content-Type': 'application/json;charset=utf-8',
         },
-      }).then(result => console.log(result));
+      })
+        .then(result => console.log(result))
+        .then(() => window.location.reload());
     } else if (!isFollow) {
-      fetch(`http://10.58.52.110:3000/post/follow?writerId=${writerId}`, {
+      fetch(`${API.follow}?writerId=${writerId}`, {
         method: 'POST',
         headers: {
           authorization: accessToken,
@@ -22,7 +26,8 @@ const ListFollow = ({ writerId, isFollowing }) => {
         },
       })
         .then(response => response.json())
-        .then(result => console.log(result));
+        .then(result => console.log(result))
+        .then(() => window.location.reload());
     }
   };
 

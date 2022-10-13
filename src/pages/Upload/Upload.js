@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UploadList from './UploadList';
 import styled from 'styled-components';
 import { SIZES, RESIDENCE, STYLE, SPACE } from './data/selectFilter';
+import API from '../../config';
 
 const Upload = () => {
+  const navigate = useNavigate();
+  const accessToken = localStorage.getItem('token');
   const [clickPhotoOrVideo, setClickPhotoOrVideo] = useState(true);
   const [uploadedImgs, setUploadedImgs] = useState([]);
   const [uploadInfo, setUploadInfo] = useState({
@@ -18,6 +21,7 @@ const Upload = () => {
     comment: '',
     hashTag: [],
   });
+  console.log(uploadInfo);
 
   const uploadForm = new FormData();
   uploadForm.append('marker', JSON.stringify(uploadInfo.marker));
@@ -56,8 +60,8 @@ const Upload = () => {
       ...uploadInfo,
       marker: {
         ...uploadInfo.marker,
-        x: x.toFixed(4),
-        y: y.toFixed(4),
+        x: x.toFixed(4) * 100,
+        y: y.toFixed(4) * 100,
       },
     });
   };
@@ -67,13 +71,12 @@ const Upload = () => {
       ...uploadInfo,
       marker: {
         ...uploadInfo.marker,
-        x,
-        y,
+        x: x,
+        y: y,
       },
     });
   };
 
-  console.log(uploadInfo);
   const handleProductId = (e, id, searchProductInfo) => {
     e.preventDefault();
 
@@ -118,10 +121,11 @@ const Upload = () => {
   const onSubmit = e => {
     e.preventDefault();
 
-    fetch('http://10.58.52.71:3000/posting', {
+    fetch(`${API.posting}`, {
       method: 'POST',
       headers: {
         enctype: 'multipart/form-data',
+        authorization: accessToken,
       },
       body: uploadForm,
     })
@@ -129,6 +133,7 @@ const Upload = () => {
       .then(data => {
         if (data.message === 'post success') {
           alert('성공');
+          navigate('/main');
         } else {
           alert('실패');
         }
@@ -140,7 +145,7 @@ const Upload = () => {
       <Nav>
         <NavWidth>
           <LogoBox>
-            <Link to="/main">
+            <Link to="/list">
               <LogoImg src="/images/logo.png" alt="yourhouse_logo" />
             </Link>
           </LogoBox>
@@ -311,7 +316,7 @@ const ImageOrVideo = styled.ul`
   color: ${props => props.theme.style.deepGrey};
   width: 60%;
   height: 60px;
-  margin: 60px auto 0;
+  margin: 80px auto 0;
   font-size: 15px;
   font-weight: 700;
 `;

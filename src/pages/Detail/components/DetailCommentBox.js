@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import DetailComment from './DetailComment';
+import API from '../../../config';
 
 const DetailFooter = ({ postId }) => {
   const [comment, setComment] = useState('');
@@ -9,31 +10,46 @@ const DetailFooter = ({ postId }) => {
   const [commentInfo, setCommentInfo] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const offset = searchParams.get('offset');
+  const [offsetString, setOffsetString] = useState(0);
   const limit = searchParams.get('limit');
   const params = useParams();
 
   const paramsId = params.id;
 
+  const accessToken = localStorage.getItem('token');
+  const profileImage = localStorage.getItem('profileImage');
+
   const movePage = pageNum => {
+    setOffsetString((pageNum - 1) * 5);
     searchParams.set('offset', (pageNum - 1) * 5);
     setSearchParams(searchParams);
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3000/comment?postId=2&limit=${5}&offset=${0}`)
-      // fetch(
-      //   `http://10.58.52.71:3000/comment?postId=${paramsId}&limit=${5}&offset=${offset}`
-      // )
+    fetch(
+      `${API.comment}?postId=${paramsId}&limit=${5}&offset=${offsetString}`,
+      {
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          authorization: accessToken,
+        },
+      }
+    )
       .then(response => response.json())
-      .then(result => setCommentInfo(result.comments));
-  }, [offset, limit, commentArray]);
+      .then(
+        result => (
+          console.log(result.comments), setCommentInfo(result.comments)
+        )
+      );
+  }, [offsetString, limit, commentArray]);
 
-  const commentSubmit = () => {
-    fetch('http://10.58.52.71:3000/comment', {
+  const commentSubmit = e => {
+    e.preventDefault();
+    fetch(`${API.comment}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
+        authorization: accessToken,
       },
       body: JSON.stringify({
         comment: comment,
@@ -50,6 +66,9 @@ const DetailFooter = ({ postId }) => {
       })
     );
   };
+
+  const onChange = event => setComment(event.target.value);
+
   const saveComment = event => {
     if (comment === '') {
       return;
@@ -58,12 +77,9 @@ const DetailFooter = ({ postId }) => {
     setComment('');
   };
 
-  const onChange = event => setComment(event.target.value);
-
   const pressEnter = event => {
-    if (event.key === 'Enter') {
-      saveComment();
-    }
+    event.preventDefault();
+    saveComment();
   };
 
   // 1이면 내가 쓴글 0이면 내가 안쓸글이니 삭제아이콘을 1일때 띄어라 commentEx
@@ -72,20 +88,17 @@ const DetailFooter = ({ postId }) => {
     <DetailComments>
       <CommentCount>
         댓글
-        <CommentCountNum>{commentInfo.length}</CommentCountNum>
+        <CommentCountNum>{commentInfo?.length}</CommentCountNum>
       </CommentCount>
 
       <CommentInputWrap onClick={saveComment}>
-        <CommentProfile
-          src="https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2hhcmFjdGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-          alt="프로필"
-        />
-        <CommentInputBox>
+        <CommentProfile src={profileImage} alt="프로필" />
+        <CommentInputBox onSubmit={commentSubmit}>
           <CommentInput
             type="text"
-            onKeyPress={pressEnter}
+            // onSubmit={pressEnter}
             onChange={onChange}
-            comment={comment}
+            value={comment}
             placeholder="칭찬과 격려의 댓글은 작성자에게 큰 힘이 됩니다 :)"
             inputValue
           />
@@ -95,7 +108,7 @@ const DetailFooter = ({ postId }) => {
       </CommentInputWrap>
 
       <Comment>
-        {commentInfo.map((comments, id) => (
+        {commentInfo?.map((comments, id) => (
           <DetailComment
             comments={comments}
             key={id}
@@ -183,7 +196,7 @@ const CommentProfile = styled.img`
   border-radius: 100%;
 `;
 
-const CommentInputBox = styled.div`
+const CommentInputBox = styled.form`
   ${props => props.theme.variables.flex('', 'flex-end', 'center')}
   width: 678px;
   height: 46px;

@@ -18,8 +18,8 @@ const DetailFeed = ({ feed }) => {
       <DetailCircleBox>
         <DetailPic src={main_pic_url} />
         <DetailProductCont
-          offset_X={Number(products[0].offset_X) * 100}
-          offset_Y={Number(products[0].offset_Y) * 100}
+          offset_X={Number(products[0].offset_X)}
+          offset_Y={Number(products[0].offset_Y)}
         >
           <DetailBluePoint>
             <DetailBlueCircle>&#43;</DetailBlueCircle>
@@ -60,12 +60,12 @@ export default DetailFeed;
 const DetailNav = styled.h1`
   width: 720px;
   height: 40px;
-  margin: 0 auto;
+  margin: 0px 0px 20px 0px;
   color: ${props => props.theme.style.middleGrey};
 `;
 
 const DetailNavBtn = styled.button`
-  width: 80px;
+  padding: 12px;
   height: 32px;
   text-align: center;
   color: ${props => props.theme.style.middleGrey};
@@ -74,7 +74,6 @@ const DetailNavBtn = styled.button`
 `;
 
 const CircleProduct = styled.div`
-  border: 1px solid red;
   position: absolute;
   top: 40px;
   left: 50%;
@@ -108,6 +107,7 @@ const DetailPic = styled.img`
   line-height: 15px;
   width: 720px;
   height: 720px;
+  object-fit: cover;
 `;
 
 const DetailProductCont = styled.div`
@@ -146,17 +146,14 @@ const CircleProductInfo = styled.div`
 const CircleProductImg = styled.img`
   width: 80px;
   height: 80px;
-  border: 1px solid red;
 `;
 
 const CircleProductText = styled.div`
   width: calc(100% - 80px);
   padding-left: 10px;
-  border: 1px solid red;
 `;
 
 const Brand = styled.p`
-  border: 1px solid red;
   font-size: 11px;
   line-height: 17px;
   color: #757575;
@@ -165,7 +162,6 @@ const Brand = styled.p`
 const Description = styled.p`
   font-size: 13px;
   line-height: 20px;
-  border: 1px solid red;
 `;
 
 const DetailSubPic = styled.div`

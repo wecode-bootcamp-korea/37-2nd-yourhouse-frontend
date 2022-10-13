@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { RotatingLines } from 'react-loader-spinner';
 import { useLocation, useNavigate } from 'react-router-dom';
+import API from '../../config';
 
 const UserAuth = () => {
   const location = useLocation();
@@ -9,7 +10,7 @@ const UserAuth = () => {
   const code = location.search;
 
   useEffect(() => {
-    fetch(`http://10.58.52.78:3000/user/auth${code}`, {
+    fetch(`${API.login}${code}`, {
       headers: {
         'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
       },
@@ -21,7 +22,8 @@ const UserAuth = () => {
             ? alert(`${result.nickname}님 반갑습니다!`)
             : alert('로그인 실패'),
           localStorage.setItem('token', result.accessToken),
-          localStorage.setItem('nickname', result.nickname)
+          localStorage.setItem('nickname', result.nickname),
+          localStorage.setItem('profileImage', result.profileImage)
         )
       )
       .then(() => navigate('/main'));

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Draggable from 'react-draggable';
 import ProductList from './ProductList';
 import styled from 'styled-components';
+import API from '../../config';
 
 const BTN_SIZE = 25;
 
@@ -18,8 +19,8 @@ const MakerModal = ({
 
   useEffect(() => {
     if (searchProduct.length > 0) {
-      fetch('data/searchProduct.json')
-        // fetch(`http://10.58.52.78:3000/search/product?product=${searchProduct}`)
+      // fetch('data/searchProduct.json')
+      fetch(`${API.searchProducts}?product=${searchProduct}`)
         .then(response => response.json())
         .then(result => setSearchProductInfo(result.products));
     }
@@ -70,7 +71,9 @@ const MakerModal = ({
               </Preview>
             )}
             {searchProductInfo.length === 0 && searchProduct !== '' && (
-              <>검색 결과가 없습니다.</>
+              <Preview>
+                <PreviewText>검색 결과가 없습니다.</PreviewText>
+              </Preview>
             )}
             {searchProductInfo.map(product => (
               <ProductList

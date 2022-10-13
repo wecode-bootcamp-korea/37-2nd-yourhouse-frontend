@@ -5,33 +5,34 @@ import styled from 'styled-components';
 import DetailFeed from './components/DetailFeed';
 import DetailProfile from './components/DetailProfile';
 import DetailCommentBox from './components/DetailCommentBox';
+import API from '../../config.js';
 
 const Detail = () => {
   const [feeds, setFeedData] = useState([]);
   const params = useParams();
 
   useEffect(() => {
-    fetch('data/detailFeed.json')
-      // fetch(`http://localhost:3000/post/${params.id}`)
+    // fetch('data/detailFeed.json')
+    fetch(`${API.detail}/${params.id}`)
       // fetch('http://10.58.52.78:3000/post/1')
       .then(response => response.json())
       .then(result => setFeedData(result.post));
-  }, []);
+  }, [params.id]);
 
   // console.log(params);
   return (
-    <>
+    <Container>
       <FeedBox>
         {feeds?.map(feed => {
           return <DetailFeed key={feed.id} feed={feed} />;
         })}
-
+        {console.log(feeds)}
         <ReviewContainer>
           <div>
             <ReviewText1>조회</ReviewText1>
             <ReviewText2>203</ReviewText2>
             <ReviewText1>댓글</ReviewText1>
-            <ReviewText2>4</ReviewText2>
+            <ReviewText2>{feeds[0]?.commentsQuantity}</ReviewText2>
           </div>
           <Report>신고하기</Report>
         </ReviewContainer>
@@ -39,11 +40,15 @@ const Detail = () => {
       <DetailProfile />
 
       <DetailCommentBox postId={feeds.id} />
-    </>
+    </Container>
   );
 };
 
 export default Detail;
+
+const Container = styled.div`
+  padding-top: 200px;
+`;
 
 const FeedBox = styled.div`
   width: 720px;
@@ -55,7 +60,7 @@ const ReviewContainer = styled.div`
   width: 720px;
   height: 40px;
   border-bottom: 1px solid ${props => props.theme.style.middleGrey};
-  margin: 8px 0 8px 0;
+  margin: 0px 0 10px 10px;
 `;
 
 const ReviewText1 = styled.span`

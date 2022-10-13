@@ -107,21 +107,25 @@ const UploadList = ({
                 <CircleProductInfo>
                   <CircleProductImg
                     src={
-                      uploadInfo.productInfo[uploadInfo.marker.productId - 1]
-                        .image
+                      uploadInfo.productInfo.find(
+                        el => el.id === uploadInfo.marker.productId
+                      ).image
                     }
                   />
+
                   <CircleProductText>
                     <Brand>
                       {
-                        uploadInfo.productInfo[uploadInfo.marker.productId - 1]
-                          .name
+                        uploadInfo.productInfo.find(
+                          el => el.id === uploadInfo.marker.productId
+                        ).name
                       }
                     </Brand>
                     <Description>
                       {
-                        uploadInfo.productInfo[uploadInfo.marker.productId - 1]
-                          .description
+                        uploadInfo.productInfo.find(
+                          el => el.id === uploadInfo.marker.productId
+                        ).description
                       }
                     </Description>
                   </CircleProductText>

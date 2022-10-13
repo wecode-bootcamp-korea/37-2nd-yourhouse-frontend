@@ -1,13 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const SearchedResult = () => {
+const SearchedResult = ({ searchedPosts, searchedRelatedTerm }) => {
   return (
     <Container>
-      <ResultItem>
-        <Icon src="./images/search.png" />
-        <ItemText>상품 이름/ 유저 아이디</ItemText>
-      </ResultItem>
+      {searchedRelatedTerm?.map(el => (
+        <ResultItem>
+          <Icon src="../images/search.png" />
+          <ItemText>{el.description}</ItemText>
+        </ResultItem>
+      ))}
+
+      {searchedPosts?.map(el => (
+        <Link to={`/detail/${el.postId}`}>
+          <ResultItem>
+            <Icon src={el.profile_image} />
+            <ItemText>{el.nickname}</ItemText>
+            <ItemText2>{el.postInfo[0].description}</ItemText2>
+          </ResultItem>
+        </Link>
+      ))}
     </Container>
   );
 };
@@ -28,6 +41,7 @@ const ResultItem = styled.div`
   height: 40px;
   padding: 8px;
   font-size: 14px;
+  background-color: white;
 `;
 
 const Icon = styled.img`
@@ -35,9 +49,8 @@ const Icon = styled.img`
   top: 50%;
   left: 8%;
   transform: translate(-50%, -50%);
-  width: 18px;
-  height: 18px;
-  opacity: 0.5;
+  width: 22px;
+  height: 22px;
 `;
 
 const ItemText = styled.span`
@@ -46,4 +59,8 @@ const ItemText = styled.span`
   top: 50%;
   left: 15%;
   transform: translate(0%, -50%);
+`;
+
+const ItemText2 = styled(ItemText)`
+  left: 30%;
 `;

@@ -56,11 +56,13 @@ const Main = () => {
 export default Main;
 
 const Container = styled.div`
-  ${props => props.theme.variables.flex('column', '', '')}
+  ${props => props.theme.variables.flex('column', 'center', 'center')}
   width: 1200px;
 `;
 
 const TextArea = styled.div`
+  margin-top: 300px;
+  margin-bottom: 80px;
   ${props => props.theme.variables.flex('column', '', '')};
   gap: 20px;
 `;
@@ -77,7 +79,7 @@ const DetailText = styled(Title)`
 `;
 
 const ImageArea = styled.div`
-  margin: 30px 0px 100px 0px;
+  margin: 30px 0px 200px 0px;
 `;
 
 const ViewWindow = styled.div`

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MyPageDropdown from './MyPageDropdown/MyPageDropdown';
 import MyPageContent from './MyPageContent/MyPageContent';
 import { Link } from 'react-router-dom';
+import API from '../../config';
 
 const MyPage = () => {
   const accessToken = localStorage.getItem('token');
@@ -14,10 +15,9 @@ const MyPage = () => {
     setIsDropdown(false);
   };
   useEffect(() => {
-    fetch('http://10.58.52.78:3000/profile', {
+    fetch(`${API.myProfile}`, {
       headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NjUzOTIyODB9.Tc3gQja-ZlpQ4J3wuat73yntLoI_RAngbBH5SVyvmLM',
+        authorization: accessToken,
       },
     })
       .then(res => res.json())
@@ -25,10 +25,9 @@ const MyPage = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://10.58.52.78:3000/profile/post`, {
+    fetch(`${API.myContents}`, {
       headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NjUzOTIyODB9.Tc3gQja-ZlpQ4J3wuat73yntLoI_RAngbBH5SVyvmLM',
+        authorization: accessToken,
       },
     })
       .then(res => res.json())
@@ -37,10 +36,17 @@ const MyPage = () => {
 
   const fetchData = name => {
     if (name === '좋아요') {
-      fetch('http://10.58.52.78:3000/profile/like', {
+      fetch(`${API.myLikes}`, {
         headers: {
-          authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NjUzOTIyODB9.Tc3gQja-ZlpQ4J3wuat73yntLoI_RAngbBH5SVyvmLM',
+          authorization: accessToken,
+        },
+      })
+        .then(res => res.json())
+        .then(data => (console.log(data.posts), setPosts(data.posts)));
+    } else if (name === '사진') {
+      fetch(`${API.myContents}`, {
+        headers: {
+          authorization: accessToken,
         },
       })
         .then(res => res.json())
@@ -94,11 +100,11 @@ const MyPage = () => {
                 <FollowWrap>
                   <FollowBox>
                     <Follow>팔로워</Follow>
-                    <FollowNum>{profile.follow}</FollowNum>
+                    <FollowNum>{profile.follower}</FollowNum>
                   </FollowBox>
                   <FollowingBox>
                     <Following>팔로잉</Following>
-                    <FollowingNum>{profile.follower}</FollowingNum>
+                    <FollowingNum>{profile.follow}</FollowingNum>
                   </FollowingBox>
                 </FollowWrap>
                 <OptionWrap>
@@ -146,10 +152,10 @@ const Nav = styled.div`
   font-size: 20px;
   font-weight: 600;
   height: 60px;
-  border-bottom: 1px solid rgb(218, 220, 224);
 `;
 
 const NavList = styled.div`
+  margin-top: 270px;
   z-index: 1000;
   padding: 0 15px 0 15px;
   cursor: pointer;
@@ -160,13 +166,15 @@ const NavList = styled.div`
 `;
 
 const Top = styled.div`
+  margin-top: 130px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: ${props => props.theme.style.deepGrey};
   font-weight: 600;
   height: 60px;
-  border-bottom: 1px solid rgb(218, 220, 224);
+  border-bottom: 1px solid ${props => props.theme.style.lightGrey};
+  border-top: 1px solid ${props => props.theme.style.lightGrey};
 `;
 
 const ListTop = styled.div`
@@ -197,6 +205,7 @@ const UserWrap = styled.div`
 const UserCont = styled.div`
   position: sticky;
   top: 80px;
+  margin-bottom: 50px;
 `;
 
 const Social = styled.img`

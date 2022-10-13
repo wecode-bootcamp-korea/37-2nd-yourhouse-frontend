@@ -1,34 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
   const today = new Date();
+  const location = useLocation();
+  const removeNavPathList = ['/login', '/signup', '/upload', '/user/auth'];
 
   return (
-    <Container>
-      <TextBox>
-        <CustomerCenterTitle href="tel:1004-1004">
-          고객센터 {'>'}
-        </CustomerCenterTitle>
-        <CustomerCenterNum>1004-1004</CustomerCenterNum>
-      </TextBox>
-      <Text>09:00~18:00 (주말, 공휴일은 상담 불가능)</Text>
-      <FooterMenus>
-        {FOOTER_ITEMS.map((item, i) => (
-          <Item key={i}>{item}</Item>
-        ))}
-      </FooterMenus>
-      <TextBox>
-        <GreyItem>상호명 : (주) 너네집 이메일 : yourHouse@gmail.com</GreyItem>
-        <GreyItem>
-          개발자 : 김지원, 박영태, 양석문, 장기석, 장문정, 정우진, 추재호
-        </GreyItem>
-        <GreyItem>
-          &copy; Copyright {today.getFullYear()}. YourHouse. All rights
-          reserved.
-        </GreyItem>
-      </TextBox>
-    </Container>
+    <>
+      {removeNavPathList.indexOf(location.pathname) === -1 && (
+        <Container>
+          <TextBox>
+            <CustomerCenterTitle href="tel:1004-1004">
+              고객센터 {'>'}
+            </CustomerCenterTitle>
+            <CustomerCenterNum>1004-1004</CustomerCenterNum>
+          </TextBox>
+          <Text>09:00~18:00 (주말, 공휴일은 상담 불가능)</Text>
+          <FooterMenus>
+            {FOOTER_ITEMS.map((item, i) => (
+              <Item key={i}>{item}</Item>
+            ))}
+          </FooterMenus>
+          <TextBox>
+            <GreyItem>
+              상호명 : (주) 너네집 이메일 : yourHouse@gmail.com
+            </GreyItem>
+            <GreyItem>
+              개발자 : 김지원, 박영태, 양석문, 장기석, 장문정, 정우진, 추재호
+            </GreyItem>
+            <GreyItem>
+              &copy; Copyright {today.getFullYear()}. YourHouse. All rights
+              reserved.
+            </GreyItem>
+          </TextBox>
+        </Container>
+      )}
+    </>
   );
 };
 

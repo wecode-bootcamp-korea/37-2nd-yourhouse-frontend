@@ -3,13 +3,49 @@ import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import EventBar from './EventBar';
 import SearchedResult from './SearchedResult';
+import API from '../../config';
 
 const Nav = () => {
   const location = useLocation();
-  const removeNavPathList = ['/login', '/signup', '/upload'];
+  const removeNavPathList = ['/login', '/signup', '/upload', '/user/auth'];
   const [searchedTerm, setSearchedTerm] = useState('');
   const [isEventBarVisible, setIsEventBarVisible] = useState(true);
   const [scrollY, setScrollY] = useState(0);
+
+  const [searchedPosts, setSearchedPosts] = useState([]);
+  const [searchedRelatedTerm, setSearchedRelatedTerm] = useState([]);
+
+  const nickname = localStorage.getItem('nickname');
+
+  useEffect(() => {
+    if (searchedTerm.length) {
+      fetch(`${API.searchPosts}?post=${searchedTerm}`)
+        .then(response => response.json())
+        .then(
+          result => (
+            console.log('포스트 검색', result.posts),
+            setSearchedPosts(result.posts)
+          )
+        );
+    }
+  }, [searchedTerm]);
+
+  useEffect(() => {
+    if (searchedTerm.length) {
+      fetch(`${API.searchRelated}${searchedTerm}`)
+        .then(response => response.json())
+        .then(
+          result => (
+            console.log('연관검색어', result.postInfo),
+            setSearchedRelatedTerm(result.postInfo)
+          )
+        );
+    }
+  }, [searchedTerm]);
+
+  // searchPosts: `${BASE_URL}/search/list`, // 김지원
+  // searchProducts: `${BASE_URL}/search/product`, // 장문정
+  // searchRelated: `${BASE_URL}/search?post=`, // 김지원
 
   const eventBarHeight = 50;
   const saveTerm = e => {
@@ -48,30 +84,45 @@ const Nav = () => {
           <ContentsWrap>
             <CenterWrap>
               <Link to="/">
-                <Logo src="./images/logo.png" />
+                <Logo src="../images/logo.png" />
               </Link>
               <MenuItems>
-                <MenuItem>커뮤니티</MenuItem>
+                <Link to="/list">
+                  <MenuItem>커뮤니티</MenuItem>
+                </Link>
                 <MenuItem>스토어</MenuItem>
               </MenuItems>
             </CenterWrap>
             <SearchSet>
               <SearchBarSet>
-                <Icon src="./images/search.png" />
+                <Icon src="../images/search.png" />
                 <SearchBar
                   onChange={saveTerm}
                   value={searchedTerm}
                   placeholder="아이디, 상품 검색"
                 />
                 {searchedTerm.length !== 0 && (
-                  <XIcon onClick={clearTerm} src="./images/close.png" />
+                  <XIcon onClick={clearTerm} src="../images/close.png" />
                 )}
               </SearchBarSet>
-              {/* <SearchedResult /> */}
+              {searchedPosts?.length + searchedPosts?.length > 0 && (
+                <SearchedResult
+                  searchedPosts={searchedPosts}
+                  searchedRelatedTerm={searchedRelatedTerm}
+                />
+              )}
             </SearchSet>
+
             <CenterWrap>
-              <MyPage to="/mypage">김지원 님</MyPage>
-              <UploadButton to="/upload">글쓰기 ✏️</UploadButton>
+              {nickname ? (
+                <MyPage to="/mypage">{nickname} 님</MyPage>
+              ) : (
+                <MyPage to="/login">로그인 해주세요</MyPage>
+              )}
+
+              <UploadButton to={nickname ? '/upload' : '/login'}>
+                글쓰기 ✏️
+              </UploadButton>
             </CenterWrap>
           </ContentsWrap>
         </>
@@ -86,6 +137,7 @@ const Container = styled.div`
   ${props => props.theme.variables.flex('column', '', 'center')};
   width: 100%;
   position: fixed;
+  z-index: 1000000;
   border-bottom: 1px solid ${props => props.theme.style.lightGrey};
   background-color: ${props => props.theme.style.white};
   a {
