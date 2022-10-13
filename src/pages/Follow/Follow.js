@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import API from '../../config';
+import ListHeartButton from '../List/ListImages/ListHeartButton/ListHeartButton';
 
 const Follow = () => {
   const [product, setProduct] = useState([]);
   const accessToken = localStorage.getItem('token');
 
   useEffect(() => {
-    fetch(`http://10.58.52.110:3000/post/follow?limit=100&offset=0`, {
+    fetch(`${API.follow}?limit=100&offset=0`, {
       method: 'GET',
       headers: {
         authorization: accessToken,
@@ -14,31 +17,47 @@ const Follow = () => {
       },
     })
       .then(res => res.json())
-      .then(data => console.log(data));
+      .then(data => setProduct(data.posts));
   }, []);
 
   return (
     <FollowWrap>
+      <ListNav>
+        <Link to="/list">
+          <NavItem>사진</NavItem>
+        </Link>
+        <Link to="/follow">
+          <NavItem>팔로잉</NavItem>
+        </Link>
+      </ListNav>
+
       {product.map(product => {
         return (
           <FollowBox key={product.id}>
             <ListBox>
               <ListUser>
-                <ListProfile src={product.userprofile} />
+                <ListProfile src={product.profile_image} />
                 <ListUserWrap>
                   <ListUserBox>
-                    <ListUserId>{product.userid}</ListUserId>
+                    <ListUserId>{product.nickname}</ListUserId>
                   </ListUserBox>
                 </ListUserWrap>
               </ListUser>
               <ListImageWrap>
                 <ListView>조회수 250</ListView>
 
-                <ListImage src={product.images} />
+                <ListImage src={product.postinfo[0].image} />
               </ListImageWrap>
 
-              <ListContent>{product.contents}</ListContent>
+              <ListContent>{product.postinfo[0].desc}</ListContent>
               <ListLike>
+                <LikeWrap>
+                  <ListHeartButton
+                    postId={product.postId}
+                    liked={product.likeEx}
+                    likesNum={product.likesNum}
+                  />
+                </LikeWrap>
                 <LikeWrap>
                   <ImageButton>
                     <ListBookmark src="./images/ribbon3.png" />
@@ -49,7 +68,8 @@ const Follow = () => {
                   <ImageButton>
                     <ListComment src="./images/chat.png" />
                   </ImageButton>
-                  {product.comment}
+                  {console.log(product)}
+                  {product.commentsNum}
                 </LikeWrap>
                 <LikeWrap>
                   <ImageButton>
@@ -67,12 +87,41 @@ const Follow = () => {
 
 export default Follow;
 
+// const Container = styled.div`
+//   position: fixed;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// `;
+
 const FollowWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   background-color: rgb(247, 248, 250);
+`;
+
+const ListNav = styled.div`
+  display: flex;
+  position: fixed;
+  top: 130px;
+  background-color: white;
+  left: 0;
+  padding-left: 22%;
+  gap: 40px;
+  width: 100vw;
+  align-items: center;
+  height: 54px;
+  border-bottom: 1px solid ${props => props.theme.style.lightGrey};
+  margin-bottom: 10px;
+`;
+
+const NavItem = styled.span`
+  font-weight: 500;
+
+  :hover {
+    color: ${props => props.theme.style.skyBlue};
+  }
 `;
 
 const FollowBox = styled.div`
@@ -80,7 +129,7 @@ const FollowBox = styled.div`
   border: 2px solid ${props => props.theme.style.lightGrey};
   border-radius: 5px;
   box-shadow: ${props => props.theme.boxShadow};
-  margin: 20px 0 20px 0;
+  margin: 200px 0 20px 0;
 `;
 const ListBox = styled.div`
   width: 500px;

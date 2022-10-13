@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import ListCount from './ListCount/LIstCount';
+import API from '../../../../config';
 
 const ListHeartButton = ({ liked, likesNum, postId }) => {
   const accessToken = localStorage.getItem('token');
@@ -9,15 +10,18 @@ const ListHeartButton = ({ liked, likesNum, postId }) => {
 
   const likeClick = () => {
     if (isLike) {
-      fetch(`http://10.58.52.110:3000/like?postId=${postId}`, {
+      fetch(`${API.like}?postId=${postId}`, {
         method: 'DELETE',
         headers: {
           authorization: accessToken,
           'Content-Type': 'application/json;charset=utf-8',
         },
-      }).then(result => console.log(result));
+      })
+        .then(result => console.log(result))
+        .then(result => console.log(result))
+        .then(() => window.location.reload());
     } else if (!isLike) {
-      fetch(`http://10.58.52.110:3000/like?postId=${postId}`, {
+      fetch(`${API.like}?postId=${postId}`, {
         method: 'POST',
         headers: {
           authorization: accessToken,
@@ -25,7 +29,8 @@ const ListHeartButton = ({ liked, likesNum, postId }) => {
         },
       })
         .then(response => response.json())
-        .then(result => console.log(result));
+        .then(result => console.log(result))
+        .then(() => window.location.reload());
     }
   };
   return (

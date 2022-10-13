@@ -137,6 +137,7 @@ const FilterWrap = styled.div`
   display: flex;
   width: 800px;
   padding: 10px 0 10px 0;
+  margin-top: 40px;
 `;
 
 const DropdownWrap = styled.div`

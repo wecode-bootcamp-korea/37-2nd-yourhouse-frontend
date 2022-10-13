@@ -22,7 +22,7 @@ const ListButton = ({ list, filterTypeClick, filterValueClick }) => {
       <NameBox>
         {list.title}
 
-        <ListOpen src="./images/down-arrow.png" />
+        <ListOpen src="../images/down-arrow.png" />
       </NameBox>
 
       {isOpenMenu && (

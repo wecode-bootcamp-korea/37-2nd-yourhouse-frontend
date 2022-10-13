@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import DeleteButton from './DeleteButton';
-// import HeartButton from './HeartButton';
+import API from '../../../config';
 
 const DetailComment = ({
   paramsId,
@@ -13,19 +13,15 @@ const DetailComment = ({
   setCommentInfo,
 }) => {
   // const [like, setLike] = useState(false);
-
+  const accessToken = localStorage.getItem('token');
   const deleteComments = e => {
-    // console.log(value);
-    fetch(
-      `http://10.58.52.71:3000/comment?postId=${paramsId}
-      &commentId=${Number(e.target.id)}`,
-      {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-      }
-    )
+    fetch(`${API.comment}?commentId=${comments.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization: accessToken,
+      },
+    })
       .then(response => response.json())
       .then(data => {
         if (data.message === 'Delete Success') {
@@ -34,23 +30,27 @@ const DetailComment = ({
         } else {
           alert('삭제 실패');
         }
-      });
+      })
+      .then(() => window.location.reload());
   };
   return (
     <ReplyContainer>
       <CommentProfile
         src={
-          comments.profileImage ? comments.profileImage : './images/user.png'
+          comments.profile_image ? comments.profile_image : './images/user.png'
         }
         alt="프로필"
       />
       <div>
-        <ReplyUserId>{comments.nickName}</ReplyUserId>
+        <ReplyUserId>{comments.nickname}</ReplyUserId>
         <ReplyUserText>{comments.comment}</ReplyUserText>
+
         <ReplyEtc>
           {/* <HeartButton like={like} onClick={() => setLike(!like)} /> */}
           {/* <DeleteButton onClick={() => removeComment(value.id)} /> */}
-          <DeleteButton id={comments.id} onClick={deleteComments} />
+          {comments.commentEx === 1 ? (
+            <DeleteButton id={comments.id} onClick={deleteComments} />
+          ) : null}
 
           {/* <DeleteButton
           
@@ -100,7 +100,7 @@ const ReplyUserText = styled.div`
 const ReplyEtc = styled.div`
   /* border: 1px solid red; */
   height: 30px;
-  ${props => props.theme.variables.flex('', 'center', 'center')}
+  ${props => props.theme.variables.flex('', '', 'center')}
 `;
 
 // const ReplyLike = styled.button`

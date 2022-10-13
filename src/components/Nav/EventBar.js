@@ -4,15 +4,15 @@ import styled from 'styled-components';
 const EventBar = ({ setIsEventBarVisible, eventBarHeight }) => {
   return (
     <Container eventBarHeight={eventBarHeight}>
-      <PromotionImage src="./images/promo-code.png" />
+      <PromotionImage src="../images/promo-code.png" />
       <PromotionText fontSize="16px">첫 구매라면 누구나 최대 </PromotionText>
       <PromotionText fontSize="20px" fontWeight="700">
         2만원 할인 받기
       </PromotionText>
-      <PromotionImage2 src="./images/download-arrow.png" />
+      <PromotionImage2 src="../images/download-arrow.png" />
       <CloseButton
         onClick={() => setIsEventBarVisible(false)}
-        src="./images/close(white).png"
+        src="../images/close(white).png"
       />
     </Container>
   );

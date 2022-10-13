@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ListHeartButton from '../../List/ListImages/ListHeartButton/ListHeartButton';
 
 const MyPageContent = ({ posts }) => {
   return (
@@ -25,8 +26,12 @@ const MyPageContent = ({ posts }) => {
               <PhotoBox>사진</PhotoBox>
               <UserAction>
                 <Like>
-                  <LikeImg src="./images/heart2.png" alt="좋아요" />
-                  <Num>{data.likes}</Num>
+                  {console.log(data.postId)}
+                  <ListHeartButton
+                    likesNum={data.likes}
+                    liked={data.likeEx}
+                    postId={data.postId}
+                  />
                 </Like>
                 <Bookmark>
                   <BookmarkImg src="./images/ribbon3.png" alt="북마크" />
@@ -60,7 +65,7 @@ const ImageCont = styled.div`
   display: flex;
   /* justify-content: space-between; */
   flex-wrap: wrap;
-  margin: 0 -10px;
+  margin: 0px -10px 20px -10px;
 `;
 
 const ImgBox = styled.div`
@@ -118,7 +123,9 @@ const PhotoUserId = styled.div`
 `;
 
 const Photocontents = styled.div`
-  margin-top: 10px;
+  margin-top: 8px;
+  margin-left: 20px;
+  font-size: 14px;
 `;
 
 const UserAction = styled.div`

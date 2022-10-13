@@ -6,6 +6,7 @@ import ListHeartButton from './ListHeartButton/ListHeartButton';
 
 const ListImages = ({ data }) => {
   const navigate = useNavigate();
+  const nickname = localStorage.getItem('nickname');
 
   return (
     <ListImageCont>
@@ -16,23 +17,24 @@ const ListImages = ({ data }) => {
               <ListProfile src={list.profile_image} alt="유저프로필" />
               <ListUserWrap>
                 <ListUserBox>
-                  <ListUserId>{list.nickname} ·</ListUserId>
-                  <ListFollow
-                    writerId={list.writerId}
-                    isFollowing={list.followEx}
-                  />
+                  <ListUserId>{list.nickname}</ListUserId>
+                  {list.nickname !== nickname && (
+                    <>
+                      ·
+                      <ListFollow
+                        writerId={list.writerId}
+                        isFollowing={list.followEx}
+                      />
+                    </>
+                  )}
                 </ListUserBox>
-                <ListUserDetail>{list.description}</ListUserDetail>
               </ListUserWrap>
             </ListUser>
             <ListImageWrap>
               <ListView>조회수 250</ListView>
-
-              <ListImage
-                src={list.postinfo[0].image}
-                alt="리스트이미지"
-                onClick={() => navigate(`detail/${list.id}}`)}
-              />
+              <Link to={`/detail/${list.id}`}>
+                <ListImage src={list.postinfo[0].image} alt="리스트이미지" />
+              </Link>
             </ListImageWrap>
             <ListLike>
               <LikeWrap>
@@ -58,20 +60,22 @@ const ListImages = ({ data }) => {
               </LikeWrap>
             </ListLike>
             <ListContent>{list.postinfo[0].desc}</ListContent>
-            <ListReview>
-              <ListCommentWrap>
-                <ListCommentProfile
-                  src={list.commentInfo[0].profile}
-                  alt="댓글작성자프로필"
-                />
-                <ListCommentUser>
-                  {list.commentInfo[0].nickname}
-                </ListCommentUser>
-                <ListCommentContent>
-                  {list.commentInfo[0].comment}
-                </ListCommentContent>
-              </ListCommentWrap>
-            </ListReview>
+            {list.commentInfo[0].postId && (
+              <ListReview>
+                <ListCommentWrap>
+                  <ListCommentProfile
+                    src={list.commentInfo[0].profile}
+                    alt="댓글작성자프로필"
+                  />
+                  <ListCommentUser>
+                    {list.commentInfo[0].nickname}
+                  </ListCommentUser>
+                  <ListCommentContent>
+                    {list.commentInfo[0].comment}
+                  </ListCommentContent>
+                </ListCommentWrap>
+              </ListReview>
+            )}
           </ListBox>
         );
       })}
@@ -88,6 +92,7 @@ const ListImageCont = styled.div`
 const ListBox = styled.div`
   width: 270px;
   margin-bottom: 50px;
+  margin-right: 30px;
 `;
 
 const ListUser = styled.div`

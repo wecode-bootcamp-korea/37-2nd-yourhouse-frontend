@@ -5,10 +5,6 @@ const Login = () => {
   const API_KEY = process.env.REACT_APP_REST_API_KEY;
   const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 
-  console.log(API_KEY);
-
-  console.log(REDIRECT_URI);
-
   return (
     <Container>
       <FormWrap>
