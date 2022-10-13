@@ -1,70 +1,26 @@
-[
-  {
-    "id": 1,
-    "main_pic_url": "https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80",
-    "text": "낙서하는 걸 좋아해요 🙌🏽 그래서 유리중문이나 벽거울에 글래스 마카를 활용해 좋아하는 일러스트를 그려 인테리어 포인트로 활용하곤해요 :) 글래스마카를 활용하면 유리 제품 어디든 마음껏 낙서해도 물티슈로 슥슥 지우기 편할뿐만 아니라 지루해진 인테리어에 큰 소품없이도 새로운 느낌을 줄 수 있어 자주 활용하는 저의 소소한 인테리어 팁이랍니다 🖤✨",
-    "sub_pic_url": {
-      "img1": "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-      "img2": "https://images.unsplash.com/photo-1551298370-9d3d53740c72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-      "img3": "https://images.unsplash.com/photo-1562113530-57ba467cea38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2hhaXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
-      "img4": "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y2hhaXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
-      "img5": "https://images.unsplash.com/photo-1600166898405-da9535204843?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2FycGV0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
-      "img6": "https://images.unsplash.com/photo-1560828343-a0b3d8864d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bWlycm9yfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-    },
-    "hashtag": {
-      "tag1": "#집꾸미기",
-      "tag2": "#가구",
-      "tag3": "#침대",
-      "tag4": "#DIY",
-      "tag5": "#혼자살기",
-      "tag6": "#셀프꾸미기",
-      "tag7": "#혼자살기"
+{
+  "post": [
+    {
+      "postId": 1,
+      "id": 1,
+      "main_pic_url": "https://images.unsplash.com/photo-1601452576653-e930574548c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8aW50ZXJpZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+      "text": null,
+      "products": [
+        {
+          "name": "스타벅스",
+          "offset_X": "0.3079",
+          "offset_Y": "0.6021",
+          "productId": 4,
+          "description": "[신상입고] 아무나 살수 없는 의자. 빨리 오세요 ㅋㅋㅋ",
+          "sub_pic_url": "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y2hhaXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
+        }
+      ],
+      "room_size": "크다",
+      "residence": "타입크다",
+      "style": "뉴오커",
+      "space": "고옹간",
+      "commentsQuantity": "3",
+      "hashtags": ["해시해시", "해시2해시"]
     }
-  },
-
-  {
-    "id": 2,
-    "main_pic_url": "https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8aG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
-    "text": "욕실 벽 셀프로 타일작업을 했어요💚🤍 여자혼자 하다보니 사실 좀 힘들고 자세히보면 약간 어설프기도 하지만😇 그래도 화장실 들어올때마다 만족하며 지내고 있어요🛁💛 스스로 고생했어 하는중 (토닥토닥)🥹💚",
-    "sub_pic_url": {
-      "img1": "https://images.unsplash.com/photo-1559051668-9024c9b5e84b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGlsbG93fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
-      "img2": "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dGFibGV8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
-      "img3": "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8dGFibGV8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
-      "img4": "https://images.unsplash.com/photo-1559051668-934cd674493c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHRhYmxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
-      "img5": "https://images.unsplash.com/photo-1529704193007-e8c78f0f46f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bGlnaHR8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
-      "img6": "https://images.unsplash.com/photo-1601276174812-63280a55656e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmVkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-    },
-    "hashtag": {
-      "tag1": "#만들기",
-      "tag2": "#셀프인테리어",
-      "tag3": "#욕실",
-      "tag4": "#타일",
-      "tag5": "#화장실인테리어",
-      "tag6": "#꾸미기",
-      "tag7": "#배고파"
-    }
-  },
-
-  {
-    "id": 3,
-    "main_pic_url": "https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80",
-    "text": "낙서하는 걸 좋아해요 🙌🏽 그래서 유리중문이나 벽거울에 글래스 마카를 활용해 좋아하는 일러스트를 그려 인테리어 포인트로 활용하곤해요 :) 글래스마카를 활용하면 유리 제품 어디든 마음껏 낙서해도 물티슈로 슥슥 지우기 편할뿐만 아니라 지루해진 인테리어에 큰 소품없이도 새로운 느낌을 줄 수 있어 자주 활용하는 저의 소소한 인테리어 팁이랍니다 🖤✨",
-    "sub_pic_url": {
-      "img1": "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-      "img2": "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-      "img3": "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-      "img4": "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-      "img5": "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-      "img6": "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-    },
-    "hashtag": {
-      "tag1": "#태그1",
-      "tag2": "#태그2",
-      "tag3": "#태그3",
-      "tag4": "#태그4",
-      "tag5": "#태그5",
-      "tag6": "#태그6",
-      "tag7": "#태그7"
-    }
-  }
-]
+  ]
+}

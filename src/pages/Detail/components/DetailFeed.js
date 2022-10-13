@@ -1,77 +1,185 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const DetailFeed = ({ feeds }) => {
-  const { text, hashtag, main_pic_url, sub_pic_url } = feeds;
+const DetailFeed = ({ feed }) => {
+  const { products, room_size, residence, style, space, main_pic_url, text } =
+    feed;
+  // console.log(products[0].offset_X);
   return (
-    <div>
-      <DetailPic src={main_pic_url} />
+    <>
+      <DetailNav>
+        <DetailNavBtn>{room_size}</DetailNavBtn>
+        <DetailNavBtn>{residence}</DetailNavBtn>
+        <DetailNavBtn>{style}</DetailNavBtn>
+        <DetailNavBtn>{space}</DetailNavBtn>
+      </DetailNav>
+
+      <DetailCircleBox>
+        <DetailPic src={main_pic_url} />
+        <DetailProductCont
+          offset_X={Number(products[0].offset_X) * 100}
+          offset_Y={Number(products[0].offset_Y) * 100}
+        >
+          <DetailBluePoint>
+            <DetailBlueCircle>&#43;</DetailBlueCircle>
+          </DetailBluePoint>
+          <CircleProduct>
+            <CircleProductInfo>
+              <CircleProductImg src={products[0].sub_pic_url} />
+              <CircleProductText>
+                <Brand>{products[0].name}</Brand>
+                <Description>{products[0].description}</Description>
+              </CircleProductText>
+            </CircleProductInfo>
+          </CircleProduct>
+        </DetailProductCont>
+      </DetailCircleBox>
+
       <DetailSubPic>
-        <DetailInnerPicBox>
-          <DetailInnerPicCtn src={sub_pic_url.img1} />
-          {/* <DetailInnerPicBanner>{banner}</DetailInnerPicBanner> */}
-        </DetailInnerPicBox>
-        <DetailInnerPicBox>
-          <DetailInnerPicCtn src={sub_pic_url.img2} />
-          {/* <DetailInnerPicBanner>비슷한</DetailInnerPicBanner> */}
-        </DetailInnerPicBox>
-        <DetailInnerPicBox>
-          <DetailInnerPicCtn src={sub_pic_url.img3} />
-          {/* <DetailInnerPicBanner>비슷한</DetailInnerPicBanner> */}
-        </DetailInnerPicBox>
-        <DetailInnerPicBox>
-          <DetailInnerPicCtn src={sub_pic_url.img4} />
-          {/* <DetailInnerPicBanner>비슷한</DetailInnerPicBanner> */}
-        </DetailInnerPicBox>
-        <DetailInnerPicBox>
-          <DetailInnerPicCtn src={sub_pic_url.img5} />
-          {/* <DetailInnerPicBanner>비슷한</DetailInnerPicBanner> */}
-        </DetailInnerPicBox>
-        <DetailInnerPicBox>
-          <DetailInnerPicCtn src={sub_pic_url.img6} />
-          {/* <DetailInnerPicBanner>비슷한</DetailInnerPicBanner> */}
-        </DetailInnerPicBox>
+        {/* {console.log(feed.products.sub_pic_url)} */}
+        {feed.products.map((item, id) => (
+          <DetailInnerProduct key={id} src={item.sub_pic_url} />
+        ))}
+        {/* <DetailInnerPicBanner>비슷한</DetailInnerPicBanner> */}
       </DetailSubPic>
-
       <DetailText>{text}</DetailText>
-
       <DetailHashTagBox>
-        <DetailHashTag>{hashtag.tag1}</DetailHashTag>
-        <DetailHashTag>{hashtag.tag2}</DetailHashTag>
-        <DetailHashTag>{hashtag.tag3}</DetailHashTag>
-        <DetailHashTag>{hashtag.tag4}</DetailHashTag>
-        <DetailHashTag>{hashtag.tag5}</DetailHashTag>
-        <DetailHashTag>{hashtag.tag6}</DetailHashTag>
-        <DetailHashTag>{hashtag.tag7}</DetailHashTag>
+        {feed.hashtags?.map((tag, idx) => (
+          <Link to={`/list?hashtag=${tag}`} key={idx}>
+            <DetailHashTag>#{tag}</DetailHashTag>
+          </Link>
+        ))}
       </DetailHashTagBox>
-    </div>
+    </>
   );
 };
 
 export default DetailFeed;
 
+const DetailNav = styled.h1`
+  width: 720px;
+  height: 40px;
+  margin: 0 auto;
+  color: ${props => props.theme.style.middleGrey};
+`;
+
+const DetailNavBtn = styled.button`
+  width: 80px;
+  height: 32px;
+  text-align: center;
+  color: ${props => props.theme.style.middleGrey};
+  background-color: ${props => props.theme.style.white};
+  border: 1px solid white;
+`;
+
+const CircleProduct = styled.div`
+  border: 1px solid red;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  margin-left: -150px;
+  width: 300px;
+  height: 100px;
+  background-color: ${props => props.theme.style.lightGrey};
+  display: none;
+  z-index: 1;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    width: 20px;
+    height: 20px;
+    background: url(./images/triangle.png) 50% 50% no-repeat;
+    background-size: cover;
+  }
+`;
+
+const DetailCircleBox = styled.div`
+  position: relative;
+`;
+
 const DetailPic = styled.img`
   background-position: center;
+  line-height: 15px;
   width: 720px;
   height: 720px;
-  /* border: 1px solid red; */
+`;
+
+const DetailProductCont = styled.div`
+  position: absolute;
+  top: ${props => props.offset_Y}%;
+  left: ${props => props.offset_X}%;
+  &:hover ${CircleProduct} {
+    display: block;
+  }
+`;
+
+const DetailBluePoint = styled.button`
+  /* top: 0px; */
+  /* left: 0px; */
+  width: 20px;
+  height: 18px;
+  background: ${props => props.theme.style.skyBlue};
+  border-radius: 100%;
+  font-size: 18px;
+  z-index: 1;
+  color: ${props => props.theme.style.white};
+  border: none;
+`;
+
+const DetailBlueCircle = styled.div`
+  ${props => props.theme.variables.flex('', 'center', 'center')}
+  width: 100%;
+  height: 100%;
+`;
+
+const CircleProductInfo = styled.div`
+  ${props => props.theme.variables.flex('', 'space-evenly', 'center')}
+  padding:10px;
+`;
+
+const CircleProductImg = styled.img`
+  width: 80px;
+  height: 80px;
+  border: 1px solid red;
+`;
+
+const CircleProductText = styled.div`
+  width: calc(100% - 80px);
+  padding-left: 10px;
+  border: 1px solid red;
+`;
+
+const Brand = styled.p`
+  border: 1px solid red;
+  font-size: 11px;
+  line-height: 17px;
+  color: #757575;
+`;
+
+const Description = styled.p`
+  font-size: 13px;
+  line-height: 20px;
+  border: 1px solid red;
 `;
 
 const DetailSubPic = styled.div`
   ${props => props.theme.variables.flex('', 'flex-start', 'center')}
   width: 720px;
-  /* border: 1px solid green; */
   padding: 20px 0 20px 0;
 `;
 
-const DetailInnerPicBox = styled.div``;
-const DetailInnerPicCtn = styled.img`
+const DetailInnerProduct = styled.img`
   position: relative;
   width: 100px;
   height: 100px;
   border: 1px solid ${props => props.theme.style.lightGrey};
   margin-left: 10px;
-  /* background-image: url(https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60); */
   background-position: center;
   background-size: cover;
   border-radius: 32px;
@@ -80,25 +188,9 @@ const DetailInnerPicCtn = styled.img`
   }
 `;
 
-// const DetailInnerPicBanner = styled.div`
-//   ${props => props.theme.variables.flex('', '', 'center')}
-//   position: absolute;
-//   /* top: -px; */
-//   left: 50%;
-//   width: 50px;
-//   height: 26px;
-//   margin-left: -25px;
-//   padding: 0 8px;
-//   font-size: 12px;
-//   border-radius: 12px;
-//   border: 1px solid ${props => props.theme.style.lightGrey};
-//   background-color: rgba(225, 225, 225, 0.7);
-// `;
-
 const DetailText = styled.div`
   width: 720px;
   height: 24px auto;
-  /* border: 1px solid #d35400; */
   margin: 24px 0px;
   line-height: 20px;
 `;
@@ -107,12 +199,12 @@ const DetailHashTagBox = styled.div`
   width: 720px;
   height: 24px;
   margin-bottom: 50px;
-  /* border: 1px solid #192a56; */
 `;
 
 const DetailHashTag = styled.button`
   color: ${props => props.theme.style.skyBlue};
   background-color: ${props => props.theme.style.white};
   font-size: 15px;
-  border: 1px solid white;
+  border: none;
+  margin: 5px 0 2px 0;
 `;
