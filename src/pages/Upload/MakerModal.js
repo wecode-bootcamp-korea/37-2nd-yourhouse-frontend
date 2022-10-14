@@ -120,7 +120,7 @@ const PlusBtn = styled.div`
   text-align: center;
   font-size: 20px;
   font-weight: 700;
-  line-height: 20px;
+  line-height: 29px;
   cursor: pointer;
   z-index: 20;
 `;

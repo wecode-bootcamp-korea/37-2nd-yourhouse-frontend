@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ListHeartButton from '../../List/ListImages/ListHeartButton/ListHeartButton';
 
@@ -20,13 +21,14 @@ const MyPageContent = ({ posts }) => {
                 />
                 <PhotoUserId>{data.nickname}</PhotoUserId>
               </PhotoUser>
-              <ImgBox>
-                <Image src={data.postInfo[0].image} alt="포스트이미지" />
-              </ImgBox>
+              <Link to={`/detail/${data.postId}`}>
+                <ImgBox>
+                  <Image src={data.postInfo[0].image} alt="포스트이미지" />
+                </ImgBox>
+              </Link>
               <PhotoBox>사진</PhotoBox>
               <UserAction>
                 <Like>
-                  {console.log(data.postId)}
                   <ListHeartButton
                     likesNum={data.likes}
                     liked={data.likeEx}
@@ -40,7 +42,7 @@ const MyPageContent = ({ posts }) => {
 
                 <Coupon>
                   <CouponImg src="./images/chat.png" alt="쿠폰" />
-                  <CouponNum>0</CouponNum>
+                  <CouponNum>{data.comments}</CouponNum>
                 </Coupon>
               </UserAction>
               <>

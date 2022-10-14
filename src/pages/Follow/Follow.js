@@ -30,57 +30,60 @@ const Follow = () => {
           <NavItem>팔로잉</NavItem>
         </Link>
       </ListNav>
+      <FeedContainer>
+        {product.map(product => {
+          return (
+            <Link to={`/detail/${product.postId}`}>
+              <FollowBox key={product.id}>
+                <ListBox>
+                  <ListUser>
+                    <ListProfile src={product.profile_image} />
+                    <ListUserWrap>
+                      <ListUserBox>
+                        <ListUserId>{product.nickname}</ListUserId>
+                      </ListUserBox>
+                    </ListUserWrap>
+                  </ListUser>
+                  <ListImageWrap>
+                    <ListView>조회수 250</ListView>
 
-      {product.map(product => {
-        return (
-          <FollowBox key={product.id}>
-            <ListBox>
-              <ListUser>
-                <ListProfile src={product.profile_image} />
-                <ListUserWrap>
-                  <ListUserBox>
-                    <ListUserId>{product.nickname}</ListUserId>
-                  </ListUserBox>
-                </ListUserWrap>
-              </ListUser>
-              <ListImageWrap>
-                <ListView>조회수 250</ListView>
+                    <ListImage src={product.postinfo[0].image} />
+                  </ListImageWrap>
 
-                <ListImage src={product.postinfo[0].image} />
-              </ListImageWrap>
-
-              <ListContent>{product.postinfo[0].desc}</ListContent>
-              <ListLike>
-                <LikeWrap>
-                  <ListHeartButton
-                    postId={product.postId}
-                    liked={product.likeEx}
-                    likesNum={product.likesNum}
-                  />
-                </LikeWrap>
-                <LikeWrap>
-                  <ImageButton>
-                    <ListBookmark src="./images/ribbon3.png" />
-                  </ImageButton>
-                  4
-                </LikeWrap>
-                <LikeWrap>
-                  <ImageButton>
-                    <ListComment src="./images/chat.png" />
-                  </ImageButton>
-                  {console.log(product)}
-                  {product.commentsNum}
-                </LikeWrap>
-                <LikeWrap>
-                  <ImageButton>
-                    <ListBookmark src="./images/share.png" />
-                  </ImageButton>
-                </LikeWrap>
-              </ListLike>
-            </ListBox>
-          </FollowBox>
-        );
-      })}
+                  <ListContent>{product.postinfo[0].desc}</ListContent>
+                  <ListLike>
+                    <LikeWrap>
+                      <ListHeartButton
+                        postId={product.postId}
+                        liked={product.likeEx}
+                        likesNum={product.likesNum}
+                      />
+                    </LikeWrap>
+                    <LikeWrap>
+                      <ImageButton>
+                        <ListBookmark src="./images/ribbon3.png" />
+                      </ImageButton>
+                      4
+                    </LikeWrap>
+                    <LikeWrap>
+                      <ImageButton>
+                        <ListComment src="./images/chat.png" />
+                      </ImageButton>
+                      {console.log(product)}
+                      {product.commentsNum}
+                    </LikeWrap>
+                    <LikeWrap>
+                      <ImageButton>
+                        <ListBookmark src="./images/share.png" />
+                      </ImageButton>
+                    </LikeWrap>
+                  </ListLike>
+                </ListBox>
+              </FollowBox>
+            </Link>
+          );
+        })}
+      </FeedContainer>
     </FollowWrap>
   );
 };
@@ -114,6 +117,7 @@ const ListNav = styled.div`
   height: 54px;
   border-bottom: 1px solid ${props => props.theme.style.lightGrey};
   margin-bottom: 10px;
+  z-index: 500000;
 `;
 
 const NavItem = styled.span`
@@ -124,12 +128,16 @@ const NavItem = styled.span`
   }
 `;
 
+const FeedContainer = styled.div`
+  margin-top: 160px;
+`;
+
 const FollowBox = styled.div`
   background-color: white;
   border: 2px solid ${props => props.theme.style.lightGrey};
   border-radius: 5px;
   box-shadow: ${props => props.theme.boxShadow};
-  margin: 200px 0 20px 0;
+  margin: 50px 0 20px 0;
 `;
 const ListBox = styled.div`
   width: 500px;

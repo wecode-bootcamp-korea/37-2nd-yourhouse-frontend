@@ -21,12 +21,7 @@ const Nav = () => {
     if (searchedTerm.length) {
       fetch(`${API.searchPosts}?post=${searchedTerm}`)
         .then(response => response.json())
-        .then(
-          result => (
-            console.log('포스트 검색', result.posts),
-            setSearchedPosts(result.posts)
-          )
-        );
+        .then(result => setSearchedPosts(result.posts));
     }
   }, [searchedTerm]);
 
@@ -34,12 +29,7 @@ const Nav = () => {
     if (searchedTerm.length) {
       fetch(`${API.searchRelated}${searchedTerm}`)
         .then(response => response.json())
-        .then(
-          result => (
-            console.log('연관검색어', result.postInfo),
-            setSearchedRelatedTerm(result.postInfo)
-          )
-        );
+        .then(result => setSearchedRelatedTerm(result.postInfo));
     }
   }, [searchedTerm]);
 
@@ -114,7 +104,7 @@ const Nav = () => {
             </SearchSet>
 
             <CenterWrap>
-              {nickname ? (
+              {nickname && nickname !== 'undefined' ? (
                 <MyPage to="/mypage">{nickname} 님</MyPage>
               ) : (
                 <MyPage to="/login">로그인 해주세요</MyPage>

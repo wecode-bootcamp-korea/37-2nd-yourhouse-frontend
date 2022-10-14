@@ -82,16 +82,6 @@ const ListFilter = () => {
       clickedForCopy.push(value);
     }
     setClicked(clickedForCopy);
-
-    // const parsedObj = Object.fromEntries(searchParams);
-
-    // for (let val in parsedObj) {
-    //   console.log(parsedObj[val]);
-    // }
-
-    // console.log(parsedObj);
-
-    // fetch(`${API}/list${searchParams}`).then().then();
   }, [searchParams]);
 
   const filterValueClick = name => {

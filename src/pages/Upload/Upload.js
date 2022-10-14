@@ -133,7 +133,7 @@ const Upload = () => {
       .then(data => {
         if (data.message === 'post success') {
           alert('성공');
-          navigate('/main');
+          navigate('/list');
         } else {
           alert('실패');
         }

@@ -32,7 +32,10 @@ const Container = styled.div`
 
 const FormWrap = styled.div`
   ${props => props.theme.variables.flex('column', 'center', 'center')};
-  ${props => props.theme.variables.absoluteCenter};
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   gap: 40px;
   margin-top: 100px;
 `;

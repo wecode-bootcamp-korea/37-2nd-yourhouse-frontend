@@ -48,7 +48,7 @@ const DetailComment = ({
         <ReplyEtc>
           {/* <HeartButton like={like} onClick={() => setLike(!like)} /> */}
           {/* <DeleteButton onClick={() => removeComment(value.id)} /> */}
-          {comments.commentEx === 1 ? (
+          {comments.commentEx == 1 ? (
             <DeleteButton id={comments.id} onClick={deleteComments} />
           ) : null}
 
