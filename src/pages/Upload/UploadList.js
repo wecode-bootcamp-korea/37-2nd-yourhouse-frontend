@@ -94,15 +94,15 @@ const UploadList = ({
             <>
               <PlusBtn
                 onClick={handleProductModal}
-                markerX={marker.x}
-                markerY={marker.y}
+                markerX={marker.x / 100}
+                markerY={marker.y / 100}
               >
                 +
               </PlusBtn>
               <ProductModal
                 openProductModal={openProductModal}
-                markerX={marker.x}
-                markerY={marker.y}
+                markerX={marker.x / 100}
+                markerY={marker.y / 100}
               >
                 <CircleProductInfo>
                   <CircleProductImg
@@ -281,7 +281,7 @@ const PlusBtn = styled.div`
   text-align: center;
   font-size: 20px;
   font-weight: 700;
-  line-height: 20px;
+  line-height: 29px;
   cursor: pointer;
   z-index: 20;
 `;
