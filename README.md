@@ -16,7 +16,7 @@
 
 ### 데모 영상
 
-- [유튜브 링크](https://youtu.be/mul_7AIbGnA)
+- [유튜브 링크](https://youtu.be/hbioq0JMqZc)
 
 <br>
 
