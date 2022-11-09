@@ -9,7 +9,7 @@ const Follow = () => {
   const accessToken = localStorage.getItem('token');
 
   useEffect(() => {
-    fetch(`${API.follow}?limit=100&offset=0`, {
+    fetch(`${API.postFollow}?limit=100&offset=0`, {
       method: 'GET',
       headers: {
         authorization: accessToken,
