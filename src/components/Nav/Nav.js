@@ -12,6 +12,7 @@ const Nav = () => {
   const [isEventBarVisible, setIsEventBarVisible] = useState(true);
   const [scrollY, setScrollY] = useState(0);
 
+  const [resultOpen, setResultOpen] = useState(false);
   const [searchedPosts, setSearchedPosts] = useState([]);
   const [searchedRelatedTerm, setSearchedRelatedTerm] = useState([]);
 
@@ -21,7 +22,8 @@ const Nav = () => {
     if (searchedTerm.length) {
       fetch(`${API.searchPosts}?post=${searchedTerm}`)
         .then(response => response.json())
-        .then(result => setSearchedPosts(result.posts));
+        .then(result => setSearchedPosts(result.posts))
+        .then(() => setResultOpen(true));
     }
   }, [searchedTerm]);
 
@@ -29,9 +31,14 @@ const Nav = () => {
     if (searchedTerm.length) {
       fetch(`${API.searchRelated}${searchedTerm}`)
         .then(response => response.json())
-        .then(result => setSearchedRelatedTerm(result.postInfo));
+        .then(result => setSearchedRelatedTerm(result.postInfo))
+        .then(() => setResultOpen(true));
     }
   }, [searchedTerm]);
+
+  // if (searchedPosts?.length + searchedRelatedTerm?.length > 0) {
+  //   setResultOpen(true);
+  // }
 
   // searchPosts: `${BASE_URL}/search/list`, // 김지원
   // searchProducts: `${BASE_URL}/search/product`, // 장문정
@@ -95,10 +102,12 @@ const Nav = () => {
                   <XIcon onClick={clearTerm} src="../images/close.png" />
                 )}
               </SearchBarSet>
-              {searchedPosts?.length + searchedPosts?.length > 0 && (
+              {resultOpen && (
                 <SearchedResult
                   searchedPosts={searchedPosts}
                   searchedRelatedTerm={searchedRelatedTerm}
+                  clearTerm={clearTerm}
+                  setResultOpen={setResultOpen}
                 />
               )}
             </SearchSet>

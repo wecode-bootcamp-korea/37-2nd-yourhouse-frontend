@@ -1,25 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const SearchedResult = ({ searchedPosts, searchedRelatedTerm }) => {
+const SearchedResult = ({
+  searchedPosts,
+  searchedRelatedTerm,
+  setResultOpen,
+  clearTerm,
+}) => {
+  const navigate = useNavigate();
+
+  const resultClick = el => {
+    setResultOpen(false);
+    navigate(`/detail/${el.postId}`);
+    clearTerm();
+  };
+
   return (
     <Container>
       {searchedRelatedTerm?.map(el => (
-        <ResultItem>
+        <ResultItem key={el.id}>
           <Icon src="../images/search.png" />
           <ItemText>{el.description}</ItemText>
         </ResultItem>
       ))}
 
       {searchedPosts?.map(el => (
-        <Link to={`/detail/${el.postId}`}>
-          <ResultItem>
-            <Icon src={el.profile_image} />
-            <ItemText>{el.nickname}</ItemText>
-            <ItemText2>{el.postInfo[0].description}</ItemText2>
-          </ResultItem>
-        </Link>
+        <ResultItem2 onClick={() => resultClick(el)} key={el.id}>
+          <Icon src={el.profile_image} />
+          <ItemText>{el.nickname}</ItemText>
+          <ItemText2>{el.postInfo[0].description}</ItemText2>
+        </ResultItem2>
       ))}
     </Container>
   );
@@ -42,6 +53,13 @@ const ResultItem = styled.div`
   padding: 8px;
   font-size: 14px;
   background-color: white;
+`;
+
+const ResultItem2 = styled(ResultItem)`
+  cursor: pointer;
+  :hover {
+    background-color: ${props => props.theme.style.lightGrey};
+  }
 `;
 
 const Icon = styled.img`
