@@ -9,30 +9,35 @@ const ListHeartButton = ({ liked, likesNum, postId }) => {
   const [isLike, setIsLike] = useState(liked);
 
   const likeClick = () => {
-    if (isLike) {
-      fetch(`${API.like}?postId=${postId}`, {
-        method: 'DELETE',
-        headers: {
-          authorization: accessToken,
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-      })
-        .then(result => console.log(result))
-        .then(result => console.log(result))
-        .then(() => window.location.reload());
-    } else if (!isLike) {
-      fetch(`${API.like}?postId=${postId}`, {
-        method: 'POST',
-        headers: {
-          authorization: accessToken,
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-      })
-        .then(response => response.json())
-        .then(result => console.log(result))
-        .then(() => window.location.reload());
+    if (accessToken) {
+      if (isLike) {
+        fetch(`${API.like}?postId=${postId}`, {
+          method: 'DELETE',
+          headers: {
+            authorization: accessToken,
+            'Content-Type': 'application/json;charset=utf-8',
+          },
+        })
+          .then(result => console.log(result))
+          .then(result => console.log(result))
+          .then(() => window.location.reload());
+      } else if (!isLike) {
+        fetch(`${API.like}?postId=${postId}`, {
+          method: 'POST',
+          headers: {
+            authorization: accessToken,
+            'Content-Type': 'application/json;charset=utf-8',
+          },
+        })
+          .then(response => response.json())
+          .then(result => console.log(result))
+          .then(() => window.location.reload());
+      }
+    } else {
+      alert('로그인 후 이용가능한 서비스입니다.');
     }
   };
+
   return (
     <>
       <ImageButton>

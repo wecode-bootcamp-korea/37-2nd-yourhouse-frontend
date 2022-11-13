@@ -44,20 +44,26 @@ const DetailFooter = ({ postId }) => {
   }, [offsetString, limit, commentArray]);
 
   const commentSubmit = e => {
-    e.preventDefault();
-    fetch(`${API.comment}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        authorization: accessToken,
-      },
-      body: JSON.stringify({
-        comment: comment,
-        postId: params.id,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => (console.log(result.comments), setCommentArray(result)));
+    if (accessToken) {
+      e.preventDefault();
+      fetch(`${API.comment}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          authorization: accessToken,
+        },
+        body: JSON.stringify({
+          comment: comment,
+          postId: params.id,
+        }),
+      })
+        .then(response => response.json())
+        .then(
+          result => (console.log(result.comments), setCommentArray(result))
+        );
+    } else {
+      alert('로그인이 필요합니다 \n 로그인 페이지로 이동합니다');
+    }
   };
   const removeComment = id => {
     setCommentArray(
@@ -92,14 +98,20 @@ const DetailFooter = ({ postId }) => {
       </CommentCount>
 
       <CommentInputWrap onClick={saveComment}>
-        <CommentProfile src={profileImage} alt="프로필" />
+        <CommentProfile
+          src={profileImage ? profileImage : '../images/user.png'}
+          alt="프로필"
+        />
         <CommentInputBox onSubmit={commentSubmit}>
           <CommentInput
             type="text"
-            // onSubmit={pressEnter}
             onChange={onChange}
             value={comment}
-            placeholder="칭찬과 격려의 댓글은 작성자에게 큰 힘이 됩니다 :)"
+            placeholder={
+              accessToken
+                ? '칭찬과 격려의 댓글은 작성자에게 큰 힘이 됩니다 :)'
+                : '로그인 후 댓글을 달아주세요 : )'
+            }
             inputValue
           />
 

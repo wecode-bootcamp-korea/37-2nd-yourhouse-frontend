@@ -30,60 +30,69 @@ const Follow = () => {
           <NavItem>팔로잉</NavItem>
         </Link>
       </ListNav>
-      <FeedContainer>
-        {product.map(product => {
-          return (
-            <Link to={`/detail/${product.postId}`}>
-              <FollowBox key={product.id}>
-                <ListBox>
-                  <ListUser>
-                    <ListProfile src={product.profile_image} />
-                    <ListUserWrap>
-                      <ListUserBox>
-                        <ListUserId>{product.nickname}</ListUserId>
-                      </ListUserBox>
-                    </ListUserWrap>
-                  </ListUser>
-                  <ListImageWrap>
-                    <ListView>조회수 250</ListView>
-
-                    <ListImage src={product.postinfo[0].image} />
-                  </ListImageWrap>
-
-                  <ListContent>{product.postinfo[0].desc}</ListContent>
-                  <ListLike>
-                    <LikeWrap>
-                      <ListHeartButton
-                        postId={product.postId}
-                        liked={product.likeEx}
-                        likesNum={product.likesNum}
-                      />
-                    </LikeWrap>
-                    <LikeWrap>
-                      <ImageButton>
-                        <ListBookmark src="./images/ribbon3.png" />
-                      </ImageButton>
-                      4
-                    </LikeWrap>
-                    <LikeWrap>
-                      <ImageButton>
-                        <ListComment src="./images/chat.png" />
-                      </ImageButton>
-                      {console.log(product)}
-                      {product.commentsNum}
-                    </LikeWrap>
-                    <LikeWrap>
-                      <ImageButton>
-                        <ListBookmark src="./images/share.png" />
-                      </ImageButton>
-                    </LikeWrap>
-                  </ListLike>
-                </ListBox>
-              </FollowBox>
+      {accessToken ? (
+        <FeedContainer>
+          {product.map(product => {
+            return (
+              <Link to={`/detail/${product.postId}`} key={product.id}>
+                <FollowBox>
+                  <ListBox>
+                    <ListUser>
+                      <ListProfile src={product.profile_image} />
+                      <ListUserWrap>
+                        <ListUserBox>
+                          <ListUserId>{product.nickname}</ListUserId>
+                        </ListUserBox>
+                      </ListUserWrap>
+                    </ListUser>
+                    <ListImageWrap>
+                      <ListView>조회수 250</ListView>
+                      <ListImage src={product.postinfo[0].image} />
+                    </ListImageWrap>
+                    <ListContent>{product.postinfo[0].desc}</ListContent>
+                    <ListLike>
+                      <LikeWrap>
+                        <ListHeartButton
+                          postId={product.postId}
+                          liked={product.likeEx}
+                          likesNum={product.likesNum}
+                        />
+                      </LikeWrap>
+                      <LikeWrap>
+                        <ImageButton>
+                          <ListBookmark src="./images/ribbon3.png" />
+                        </ImageButton>
+                        4
+                      </LikeWrap>
+                      <LikeWrap>
+                        <ImageButton>
+                          <ListComment src="./images/chat.png" />
+                        </ImageButton>
+                        {console.log(product)}
+                        {product.commentsNum}
+                      </LikeWrap>
+                      <LikeWrap>
+                        <ImageButton>
+                          <ListBookmark src="./images/share.png" />
+                        </ImageButton>
+                      </LikeWrap>
+                    </ListLike>
+                  </ListBox>
+                </FollowBox>
+              </Link>
+            );
+          })}
+        </FeedContainer>
+      ) : (
+        <NeedToLogin>
+          <LoginMessage>
+            <span>로그인이 필요한 페이지 입니다</span>
+            <Link to="/login">
+              <LoginBtn>로그인 페이지로 이동</LoginBtn>
             </Link>
-          );
-        })}
-      </FeedContainer>
+          </LoginMessage>
+        </NeedToLogin>
+      )}
     </FollowWrap>
   );
 };
@@ -102,6 +111,7 @@ const FollowWrap = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: rgb(247, 248, 250);
+  width: 100vw;
 `;
 
 const ListNav = styled.div`
@@ -259,4 +269,31 @@ const ImageButton = styled.button`
   background-color: ${props => props.theme.style.white};
   font-size: 23px;
   color: ${props => props.theme.style.skyBlue};
+`;
+
+const NeedToLogin = styled.div`
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 160px;
+`;
+
+const LoginMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 160px;
+  top: 50%;
+  left: 50%;
+`;
+
+const LoginBtn = styled.button`
+  background-color: ${props => props.theme.style.skyBlue};
+  opacity: 0.7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px 10px 20px;
 `;
